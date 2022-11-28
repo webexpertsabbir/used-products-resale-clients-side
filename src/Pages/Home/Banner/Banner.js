@@ -8,7 +8,7 @@ const Banner = () => {
                 <div className="w-full">
                     <h1 className="mb-5 text-5xl font-bold">Save big money with <br /> our car</h1>
                     <p className="mb-5">To contribute to positive change  and <br /> achieve our sustainability goals  with many  extraordinary</p>
-                    <button className="btn btn-primary">Get Started</button>
+                    <button className="btn btn-primary text-white">Get Started</button>
                 </div>
             </div>
         </div>

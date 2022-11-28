@@ -12,7 +12,12 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
-            }
+            },
+            // {
+            //     path: '/category/:id',
+            //     element: <SingleCategory></SingleCategory>,
+            //     // loader: ({params})=> fetch(`resaleProduct.json/category/${params.id}`)    
+            // }
         ]
     }
 ])

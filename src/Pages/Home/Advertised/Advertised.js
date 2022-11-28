@@ -5,9 +5,9 @@ import './Advertised.css';
 const Advertised = () => {
     return (
         <div className='py-20 max-w-[1280px] mx-auto'>
-            <h2 className='text-lg font-semibold text-center pt-5'>Advertised</h2>
+            <h2 className='text-4xl font-semibold text-center pt-5'>Advertised</h2>
             <div className='flex justify-center items-center'>
-                <div className='bg-orange-600 w-28 mt-1 devider-line'></div>
+                <div className='bg-orange-600 w-28 mt-4 devider-line'></div>
             </div>
             <div className='pt-14 flex justify-center items-center'>
                 <div className="card w-3/4 bg-base-100 shadow-xl">
@@ -25,7 +25,7 @@ const Advertised = () => {
                         </div>
                         <p>The Toyota Hiace is a 16 seater microbus with all the luxury you can think of with an air conditioner and heater both in front and back.</p>
                         <div className="card-actions justify-end">
-                            <div className="btn btn-primary">View Details</div>
+                            <div className="btn btn-primary text-white">View Details</div>
                         </div>
                     </div>
                 </div>
