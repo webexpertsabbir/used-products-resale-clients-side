@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Category = () => {
     const [categoriItem, serCategoriItem] = useState([]);
-    fetch('resaleProduct.json')
+    fetch('http://localhost:5000/category')
         .then(res => res.json())
         .then(data => serCategoriItem(data))
-
-
 
     return (
         <div className='max-w-[1280px] mx-auto'>
@@ -22,7 +20,7 @@ const Category = () => {
 
                         <div className="card  bg-primary text-primary-content">
                             <div className="card-body">
-                                <Link to='/category/:id'>
+                                <Link to={`/category/${categori._id}`}>
                                     <h2 className="text-center text-3xl text-white font-semibold">{categori.category}</h2>
                                 </Link>
                             </div>
