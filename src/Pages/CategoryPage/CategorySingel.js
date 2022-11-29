@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal';
+
 import Products from './Products';
 
 const CategorySingel = () => {
     const { product } = useLoaderData();
+    const [car, setCar] = useState(null);
+    // console.log(car)
     // console.log(product)
 
     return (
@@ -12,8 +16,15 @@ const CategorySingel = () => {
                 product.map((products, ids) => <Products
                 key={ids}
                 products={products}
+                setCar={setCar}
                 ></Products>)
             }
+            {
+                <BookingModal
+                car={car}
+                ></BookingModal>
+            }
+
         </div>
     );
 };
