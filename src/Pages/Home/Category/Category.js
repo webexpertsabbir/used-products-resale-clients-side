@@ -9,7 +9,7 @@ const Category = () => {
 
     return (
         <div className='max-w-[1280px] mx-auto'>
-            <h2 className='text-4xl font-semibold text-center pt-5'>Car Category</h2>
+            <h2 className='text-4xl font-semibold text-center pt-5'>Resale Car Category</h2>
             <div className='flex justify-center items-center'>
                 <div className='bg-orange-600 w-28 mt-5 devider-line'></div>
             </div>
