@@ -29,6 +29,7 @@ const Footer = () => {
                     <a className="link link-hover">Cookie policy</a>
                 </div>
             </footer>
+            <p className='py-7 text-center'>© All Right Reserved by Car Deal – Privacy Policy | Terms and Conditions</p>
         </div>
     );
 };

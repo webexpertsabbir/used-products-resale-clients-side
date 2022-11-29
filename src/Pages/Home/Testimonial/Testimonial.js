@@ -4,7 +4,7 @@ import image from '../../../images/about_image.jpg'
 const Testimonial = () => {
     return (
         <div className='py-20 max-w-[1280px] mx-auto'>
-            <h2 className='text-4xl font-semibold text-center pt-5'>About</h2>
+            <h2 className='text-4xl font-semibold text-center pt-5'>About Company</h2>
             <div className='flex justify-center items-center'>
                 <div className='bg-orange-600 w-28 mt-4 devider-line'></div>
             </div>
