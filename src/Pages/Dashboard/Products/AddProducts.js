@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../../Context/AuthProvide';
@@ -10,21 +11,53 @@ const AddProducts = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { user } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
+
+    const imageHostKey = process.env.REACT_APP_IMAGBB_key;
     const navigate = useNavigate()
-    
+
 
 
     const handelAddProduct = data => {
-        console.log(data)
+        // console.log(data)
         setSignUpError('');
-        
-        saveProduct(data)
-        
+
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    // console.log(imgData.data.url);
+                    const products = {
+                        name: user.displayName,
+                        email: user.email,
+                        productName: data.name,
+                        price: data.price,
+                        purchase: data.purchase,
+                        phone: data.phone,
+                        category: data.category,
+                        condition: data.condition,
+                        location: data.location,
+                        description: data.description,
+                        image: imgData.data.url
+                    }
+
+                    saveProduct(products);
+                }
+            })
+
+
     }
 
     const saveProduct = (data) => {
         // const user = { name, email, userRol };
-        fetch('http://localhost:5000/addproducts', {
+        fetch('https://car-resale-server-side.vercel.app/addproducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -33,8 +66,9 @@ const AddProducts = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                
+                // console.log(data)
+                toast.success('Product add successfully')
+
                 navigate('/');
             })
     }
