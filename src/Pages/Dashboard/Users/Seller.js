@@ -30,6 +30,8 @@ const Seller = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>User Rol</th>
+                                <th>Delete</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +43,7 @@ const Seller = () => {
                                     <td>{seller.name}</td>
                                     <td>{seller.email}</td>
                                     <td>{seller.userRol}</td>
+                                    <td><button className='btn btn-primary'>Delete</button></td>
  
                                 </tr> )
                             }

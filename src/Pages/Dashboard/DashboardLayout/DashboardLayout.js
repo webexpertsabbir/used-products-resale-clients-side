@@ -12,7 +12,7 @@ const DashboardLayout = () => {
     const [isSaller] = useSaller(user?.email)
 
     return (
-        <div>
+        <div className='max-w-[1280px] mx-auto'>
             <Navber></Navber>
             <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />

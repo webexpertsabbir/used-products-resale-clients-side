@@ -62,10 +62,7 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
         children: [
-            {
-                path: '/dashboard',
-                element: <MyBooking></MyBooking>
-            },
+           
             {
                 path: '/dashboard/myproducts',
                 element: <MyProducts></MyProducts>
@@ -81,7 +78,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/bayer',
                 element: <AdminRoutes><Bayer></Bayer></AdminRoutes>
-            }
+            },
+            {
+                path: '/dashboard',
+                element: <MyBooking></MyBooking>
+            },
         ]
     }
 ])

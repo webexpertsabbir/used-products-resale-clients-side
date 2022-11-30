@@ -30,6 +30,7 @@ const Bayer = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>User Rol</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,7 @@ const Bayer = () => {
                                     <td>{bayer.name}</td>
                                     <td>{bayer.email}</td>
                                     <td>{bayer.userRol}</td>
+                                    <td><button className='btn btn-primary'>Delete</button></td>
  
                                 </tr> )
                             }
