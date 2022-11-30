@@ -5,6 +5,7 @@ import Confrim from "../../Pages/Confrim/Confrim";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
 import DashboardLayout from "../../Pages/Dashboard/DashboardLayout/DashboardLayout";
 import MyBooking from "../../Pages/Dashboard/MyBooking/MyBooking";
+import Users from "../../Pages/Dashboard/Users/Users";
 
 import Home from "../../Pages/Home/Home/Home";
 import Page404 from "../../Pages/Page404/Page404";
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyBooking></MyBooking>
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <Users></Users>
             }
         ]
     }

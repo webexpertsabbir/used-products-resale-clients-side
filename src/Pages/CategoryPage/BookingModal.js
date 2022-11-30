@@ -24,7 +24,8 @@ const BookingModal = ({ car, id}) => {
             userName: userName,
             email,
             phone,
-            location
+            location,
+            resalePrice
         }
 
         fetch('https://car-resale-server-side.vercel.app/booking', {
