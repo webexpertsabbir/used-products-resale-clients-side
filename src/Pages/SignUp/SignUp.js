@@ -24,7 +24,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/');
+                        saveUser(data.name, data.email, data.userRol)
                     })
                     .catch(error => console.log(error))
             })
@@ -32,6 +32,22 @@ const SignUp = () => {
                 console.log(error)
                 setSignUpError(error.message)
             })
+
+        const saveUser = (name, email, userRol) => {
+            const user = { name, email, userRol };
+            fetch('https://car-resale-server-side.vercel.app/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    navigate('/');
+                })
+        }
     }
     return (
         <div className='h-[600px] flex justify-center items-center'>
@@ -62,6 +78,22 @@ const SignUp = () => {
                         {errors.email && <p className='text-red-500' role="alert">{errors.email?.message}</p>}
 
                     </div>
+
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <select
+                            {...register("userRol", { required: "User Rol is required" })}
+                            className="input input-bordered w-full"
+                        >
+                        <option value="Bayer">Bayer</option>
+                        <option value="Seller">Seller</option>
+                        </select>
+                        {errors.email && <p className='text-red-500' role="alert">{errors.email?.message}</p>}
+
+                    </div>
+
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Password</span>
@@ -84,7 +116,7 @@ const SignUp = () => {
                         </label>
                     </div>
                     <input type="submit" value='Sign Up' className='btn btn-primary w-full' />
-                {signUpError && <p className='text-red-600'>{signUpError}</p>}
+                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p className='py-5'>Already have an account <Link to='/login' className='underline text-secondary'>Please Login</Link></p>
                 <div className="divider">OR</div>
