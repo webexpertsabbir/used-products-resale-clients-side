@@ -7,9 +7,10 @@ import { AuthContext } from '../../Context/AuthProvide';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const navigate = useNavigate();
+    // console.log(user)
 
     const handelSignUp = data => {
         console.log(data)
@@ -45,10 +46,14 @@ const SignUp = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
+                    
                     navigate('/');
                 })
         }
     }
+
+
+    
     return (
         <div className='h-[600px] flex justify-center items-center'>
             <div className='w-[500px] p-8 border rounded-lg'>
@@ -120,7 +125,6 @@ const SignUp = () => {
                 </form>
                 <p className='py-5'>Already have an account <Link to='/login' className='underline text-secondary'>Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline btn-primary w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

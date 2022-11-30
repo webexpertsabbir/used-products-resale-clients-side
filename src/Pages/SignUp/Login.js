@@ -1,5 +1,7 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvide';
 
@@ -7,9 +9,9 @@ import { AuthContext } from '../../Context/AuthProvide';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { login } = useContext(AuthContext)
+    const { login, providerLogin } = useContext(AuthContext)
     const [loginError, setLoginError] = useState('');
-
+  
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -27,6 +29,38 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message)
                 setLoginError(error.message)
+            })
+    }
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handelGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+ 
+                    saveUser(user.displayName, user.email, 'Bayer')
+               
+            })
+            .catch(error => console.log(error))
+    }
+
+
+    const saveUser = (name, email, userRol) => {
+        const user = { name, email, userRol };
+        fetch('https://car-resale-server-side.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('Login successfully')
+                navigate('/');
             })
     }
 
@@ -74,7 +108,7 @@ const Login = () => {
                 </form>
                 <p className='py-5'>Car Dell <Link to='/signup' className='underline text-secondary'>Create a new account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline btn-primary w-full'>CONTINUE WITH GOOGLE</button>
+                <button className='btn btn-outline btn-primary w-full' onClick={handelGoogleSignIn}>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

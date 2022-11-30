@@ -6,12 +6,12 @@ import logo from '../../images/main logo.png'
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext);
-    
 
-    const handelLogOut = () =>{
+
+    const handelLogOut = () => {
         logOut()
-        .then( () => {})
-        .catch(err => console.log(err))
+            .then(() => { })
+            .catch(err => console.log(err))
     }
 
 
@@ -21,7 +21,10 @@ const Navber = () => {
         <li><Link to="/dashboard">Dashboard</Link></li>
         {
             user?.uid ?
-                <li><button onClick={handelLogOut}>Log Out</button></li>
+                <>
+                    <li><p className='text-primary'>{user?.displayName}</p></li>
+                    <li><button onClick={handelLogOut}>Log Out</button></li>
+                </>
                 :
                 <li><Link to="/login">Login</Link></li>
         }
