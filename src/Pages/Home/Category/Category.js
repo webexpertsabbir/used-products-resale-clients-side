@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Category = () => {
     const [categoriItem, serCategoriItem] = useState([]);
-    fetch('http://localhost:5000/category')
+    fetch('https://car-resale-server-side.vercel.app/category')
         .then(res => res.json())
         .then(data => serCategoriItem(data))
 

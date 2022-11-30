@@ -3,6 +3,8 @@ import Main from "../../layout/Main";
 import CategorySingel from "../../Pages/CategoryPage/CategorySingel";
 import Confrim from "../../Pages/Confrim/Confrim";
 import Dashboard from "../../Pages/Dashboard/Dashboard";
+import DashboardLayout from "../../Pages/Dashboard/DashboardLayout/DashboardLayout";
+import MyBooking from "../../Pages/Dashboard/MyBooking/MyBooking";
 
 import Home from "../../Pages/Home/Home/Home";
 import Page404 from "../../Pages/Page404/Page404";
@@ -32,7 +34,7 @@ export const router = createBrowserRouter([
            
             {
                 path: '/category/:id',
-                loader: ({params})=> fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({params})=> fetch(`https://car-resale-server-side.vercel.app/category/${params.id}`),
                 element: <PrivetRoute><CategorySingel></CategorySingel></PrivetRoute>  
             },
             {
@@ -43,11 +45,16 @@ export const router = createBrowserRouter([
                 path: '*',
                 element: <Page404></Page404>
             },
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+        children: [
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <MyBooking></MyBooking>
             }
-            
         ]
     }
 ])
