@@ -15,6 +15,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Page404 from "../../Pages/Page404/Page404";
 import Login from "../../Pages/SignUp/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import AdminRoutes from "./AdminRoutes";
 import PrivetRoute from "./PrivetRoute";
 
 
@@ -75,11 +76,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/seller',
-                element: <Seller></Seller>
+                element: <AdminRoutes><Seller></Seller></AdminRoutes>
             },
             {
                 path: '/dashboard/bayer',
-                element: <Bayer></Bayer>
+                element: <AdminRoutes><Bayer></Bayer></AdminRoutes>
             }
         ]
     }
