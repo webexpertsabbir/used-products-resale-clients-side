@@ -17,7 +17,7 @@ const Navber = () => {
 
     const menuItem = <React.Fragment>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/blog">Blogs</Link></li>
         <li><Link to="/dashboard">Dashboard</Link></li>
         {
             user?.uid ?
